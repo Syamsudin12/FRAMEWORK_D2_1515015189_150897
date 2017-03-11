@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('hello-word', function () {
+    return ('hello-word');
+});
+
+Route::get('pengguna/{pengguna}', function ($pengguna) {
+	return "hello-word dari pengguna $pengguna";
+});
+
+Route::get('kelasd2/framework/{mhs?}', function ($mhs="Anonim") {
+	return "Selamat Datang $mhs";
+});
