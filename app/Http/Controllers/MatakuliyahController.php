@@ -12,19 +12,42 @@ class MatakuliyahController extends Controller
 {
     public function awal()
    {
-   		return "Hello dari MatakuliyahController";
+         return view('matakuliyah.awal', ['data'=> matakuliyah::all()]);
    }
       public function tambah()
    {
-   		return $this->simpan();
+         return view('matakuliyah.tambah');
    }
-      public function simpan()
+      public function simpan(Request $input)
    {
-   		$matakuliyah = new matakuliyah();
-   		$matakuliyah->id 			= 'N0001';
-   		$matakuliyah->title 		= 'coba';
-   		$matakuliyah->keterang 		= 'Ada';
-   		$matakuliyah->save();
-   		return "data dengan username {$matakuliyah->title} telah disimpan";
+         $matakuliyah = new matakuliyah;
+         $matakuliyah->title = $input->title;
+         $matakuliyah->keterang = $input->keterang;
+         $informasi = $matakuliyah->save() ? 'berhasil simpan data':'gagal simpan data';
+         return redirect('matakuliyah')->with(['informasi'=>$informasi]);
    }
+      public function edit($id)
+   {
+         $matakuliyah=matakuliyah::find($id);
+         return view('matakuliyah.edit')->with(array('matakuliyah' =>$matakuliyah));
+   }
+      public function lihat($id)
+   {
+         $matakuliyah=matakuliyah::find($id);
+         return view('matakuliyah.lihat')->with(array('matakuliyah' =>$matakuliyah));
+   }
+      public function update($id, Request $input)
+   {
+         $matakuliyah=matakuliyah::find($id);
+         $matakuliyah->title = $input->title;
+         $matakuliyah->keterang = $input->keterang;
+         $informasi = $matakuliyah->save() ? 'berhasil update data':'gagal update data';
+         return redirect('matakuliyah')->with(['informasi'=>$informasi]);
+   }
+      public function hapus($id)
+   {
+         $matakuliyah=matakuliyah::find($id);
+         $informasi = $matakuliyah->delete() ? 'berhasil hapus data':'gagal hapus data';
+         return redirect('matakuliyah')->with(['informasi'=>$informasi]);
+   }      
 }
