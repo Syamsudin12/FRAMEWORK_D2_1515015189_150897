@@ -7,15 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 class Mahasiswa extends Model
 {
     protected $table = 'Mahasiswa';
-    protected $fillable = ['id','nama','nim','alamat','pengguna_id'];
-
-    protected $table = 'pengguna'
-    public function pengguna()
+    protected $fillable = ['nama','nim','alamat','pengguna_id'];
+    public function Pengguna()
     {
-    	return $this->belongTo(pengguna::class);
+        return $this->belongsTo(Pengguna::class);
+    }
+
+    public function getUsernameAttribute(){
+        return $this->pengguna->username;
+    }
+
+    public function listMahasiswaDanNim(){
+        $out = [];
+        foreach ($this->all() as $mhs) {
+            $out[$mhs->id] = "{$mhs->nama} ({$mhs->nim})";
+        }
+        return $out;
     }
     public function Jadwal_matakuliyah()
     {
-    	return $this->hasOne(Jadwal_matakuliyah::class);
+    	return $this->hasMany(Jadwal_matakuliyah::class);
     }
 }

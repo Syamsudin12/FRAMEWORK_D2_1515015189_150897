@@ -7,15 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 class Dosen extends Model
 {
     protected $table = 'Dosen';
-    protected $fillable = ['id','nama','nip','alamat','pengguna_id'];
+    protected $fillable = ['nama','nip','alamat','pengguna_id'];
 
-    protected $table = 'Dosen'
     public function pengguna()
-    {
-    	return $this->belongTo(pengguna::class);
-    }
-    public function Dosen_Matakuliyah()
-    {
-    	return $this->hasOne(Dosen_Matakuliyah::class);
+   {
+    return $this->belongsTo(pengguna::class);
+   }
+   public function dosen_matakuliyah()
+   {
+    return $this->hasMany(dosen_matakuliyah::class);
+   }
+   public function listDosenDanNip()
+   {
+      $out = [];
+      foreach ($this->all() as $dsn) {
+         $out[$dsn->id] = "{$dsn->nama} ({$dsn->nip})";
+      }
+      return $out;
+   }
+   public function getUsernameAttribute(){
+        return $this->pengguna->username;
     }
 }

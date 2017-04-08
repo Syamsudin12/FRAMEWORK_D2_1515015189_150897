@@ -7,18 +7,28 @@ use Illuminate\Database\Eloquent\Model;
 class Dosen_Matakuliyah extends Model
 {
     protected $table = 'Dosen_Matakuliyah';
-    protected $fillable = ['id','dosen_id','matakuliyah_id'];
+    protected $guarded = ['id'];
 
-    public function Dosen()
-    {
-    	return $this->belongTo(Dosen::class);
-    }
-    public function Jadwal_Matakuliyah()
-    {
-    	return $this->hasOne(Jadwal_Matakuliyah::class);
-    }
-    public function Matakuliyah()
-    {
-    	return $this->belongTo(Matakuliyah::class);
-    }
+    public function dosen()
+   {
+    return $this->belongsTo(dosen::class,'Dosen_id');
+   }
+
+   public function jadwal_matakuliyah()
+   {
+    return $this->hasMany(jadwal_matakuliyah::class);
+   }
+
+   public function matakuliyah()
+   {
+    return $this->belongsTo(matakuliyah::class,'Matakuliyah_id');
+   }
+   public function listDosenDanMatakuliyah()
+   {
+      $out = [];
+      foreach ($this->all() as $dsnMtk) {
+         $out[$dsnMtk->id] = "{$dsnMtk->dosen->nama} (matakuliyah{$dsnMtk->matakuliyah->title})";
+      }
+      return $out;
+   }
 }

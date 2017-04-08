@@ -57,29 +57,29 @@ Route::get('dosen/edit/{dosen}','DosenController@edit');
 Route::post('dosen/edit/{dosen}','DosenController@update');
 Route::get('dosen/hapus/{dosen}','DosenController@hapus');
 
-Route::get('dosenmatakuliyah','Dosen_MatakuliyahController@awal');
-Route::get('dosenmatakuliyah/tambah','Dosen_MatakuliyahController@tambah');
-Route::get('dosenmatakuliyah/{dosenmatakuliyah}','Dosen_MatakuliyahController@lihat');
-Route::get('dosenmatakuliyah/{dosenmatakuliyah}','Dosen_MatakuliyahController@simpan');
-Route::get('dosenmatakuliyah/edit/{dosenmatakuliyah}','Dosen_MatakuliyahController@edit');
-Route::get('dosenmatakuliyah/edit/{dosenmatakuliyah}','Dosen_MatakuliyahController@update');
-Route::get('dosenmatakuliyah/hapus/{dosenmatakuliyah}','Dosen_MatakuliyahController@hapus');
+Route::get('dosen_matakuliyah','Dosen_MatakuliyahController@awal');
+Route::get('dosen_matakuliyah/tambah','Dosen_MatakuliyahController@tambah');
+Route::get('dosen_matakuliyah/{dosenmatakuliyah}','Dosen_MatakuliyahController@lihat');
+Route::post('dosen_matakuliyah/simpan','Dosen_MatakuliyahController@simpan');
+Route::get('dosen_matakuliyah/edit/{dosenmatakuliyah}','Dosen_MatakuliyahController@edit');
+Route::post('dosen_matakuliyah/edit/{dosenmatakuliyah}','Dosen_MatakuliyahController@update');
+Route::get('dosen_matakuliyah/hapus/{dosenmatakuliyah}','Dosen_MatakuliyahController@hapus');
 
 Route::get('mahasiswa','MahasiswaController@awal');
 Route::get('mahasiswa/tambah','MahasiswaController@tambah');
 Route::get('mahasiswa/{mahasiswa}','MahasiswaController@lihat');
-Route::get('mahasiswa/{mahasiswa}','MahasiswaController@simpan');
+Route::post('mahasiswa/simpan','MahasiswaController@simpan');
 Route::get('mahasiswa/edit/{mahasiswa}','MahasiswaController@edit');
-Route::get('mahasiswa/edit/{mahasiswa}','MahasiswaController@update');
+Route::post('mahasiswa/edit/{mahasiswa}','MahasiswaController@update');
 Route::get('mahasiswa/hapus/{mahasiswa}','MahasiswaController@hapus');
 
-Route::get('jadwal','Jadwal_MatakuliyahController@awal');
-Route::get('jadwal/tambah','Jadwal_MatakuliyahController@tambah');
-Route::get('jadwal/{jadwal}','Jadwal_MatakuliyahController@lihat');
-Route::get('jadwal/{jadwal}','Jadwal_MatakuliyahController@simpan');
-Route::get('jadwal/edit/{jadwal}','Jadwal_MatakuliyahController@edit');
-Route::get('jadwal/edit/{jadwal}','Jadwal_MatakuliyahController@update');
-Route::get('jadwal/hapus/{jadwal}','Jadwal_MatakuliyahController@hapus');
+Route::get('jadwal_matakuliyah','Jadwal_MatakuliyahController@awal');
+Route::get('jadwal_matakuliyah/tambah','Jadwal_MatakuliyahController@tambah');
+Route::get('jadwal_matakuliyah/{jadwal_matakuliyah}','Jadwal_MatakuliyahController@lihat');
+Route::post('jadwal_matakuliyah/simpan','Jadwal_MatakuliyahController@simpan');
+Route::get('jadwal_matakuliyah/edit/{jadwal_matakuliyah}','Jadwal_MatakuliyahController@edit');
+Route::post('jadwal_matakuliyah/edit/{jadwal_matakuliyah}','Jadwal_MatakuliyahController@update');
+Route::get('jadwal_matakuliyah/hapus/{jadwal_matakuliyah}','Jadwal_MatakuliyahController@hapus');
 
 
 // Route::get('mahasiswa','MahasiswaController@awal');

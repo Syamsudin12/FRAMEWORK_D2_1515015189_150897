@@ -11,6 +11,6 @@ class Matakuliyah extends Model
 
     public function Dosen_Matakuliyah()
     {
-    	return $this->hasOnes(Dosen_Matakuliyah::class);
+    	return $this->hasOne(Dosen_Matakuliyah::class);
     }
 }

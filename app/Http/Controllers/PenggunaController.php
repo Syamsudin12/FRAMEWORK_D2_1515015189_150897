@@ -21,7 +21,7 @@ class PenggunaController extends Controller
       public function simpan(Request $input)
    {
          $pengguna = new Pengguna;
-         $pengguna->Username = $input->Username;
+         $pengguna->Username = $input->username;
          $pengguna->password = $input->password;
          $informasi = $pengguna->save() ? 'berhasil simpan data':'gagal simpan data';
          return redirect('pengguna')->with(['informasi'=>$informasi]);
@@ -39,7 +39,7 @@ class PenggunaController extends Controller
       public function update($id, Request $input)
    {
          $pengguna = Pengguna::find($id);
-         $pengguna->Username = $input->Username;
+         $pengguna->Username = $input->username;
          $pengguna->password = $input->password;
          $informasi = $pengguna->save() ? 'berhasil update data':'gagal update data';
          return redirect('pengguna')->with(['informasi'=>$informasi]);
